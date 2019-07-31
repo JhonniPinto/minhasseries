@@ -1,0 +1,27 @@
+<% include ../partials/header.ejs %>
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>Sobre a série: <%- serie.name %> <a href="/series" class="btn">Voltar</a></h2>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="name">Nome da série:</label>
+                        <input type="text" name="name" id="name" class="form-control" value="<%- serie.name %>" readonly>
+                        <label for="name" class="mt-2">Situação:</label>
+                        <input type="text" name="status" id="status" class="form-control" value="<%- serie.status === 'to-watch' ? 'Para assistir' : serie.status === 'watched' ? 'Assistido' : 'Assistindo'  %>" readonly>
+                        <label for="comentario" class="mt-2">Insira um comentário:</label>
+                        <textarea name="comentario" id="comentario" rows="3" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar comentário</button>
+                    <% serie.comments.forEach(comment => { %>
+                        <p class="my-2">- <%- comment %></p>   
+                    <% }) %>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>
